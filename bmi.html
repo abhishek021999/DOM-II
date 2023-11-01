@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculatordfd</title>
+</head>
+<body>
+    <h1>Check Your BMI</h1>
+    <p>Enter Your Weight and Height below to check your BMI result</p>
+    <p>Put your weight in here (KG)</p>
+    <input id="inp1" type="number" placeholder="type weight">
+    <p>And height is here (M)</p>
+    <input id="inp2" type="number" placeholder="type height">
+    <button id="calculateButton">Calculate BMI</button>
+    <h2 id="result">Your BMI will appear here</h2>
+</body>
+</html>
+<script>
+    let input1 = document.getElementById("inp1");
+    let input2 = document.getElementById("inp2");
+    let button = document.getElementById("calculateButton");
+    let result = document.getElementById("result");
+
+    button.addEventListener('click', function () {
+        let weight = parseFloat(input1.value);
+        let height = parseFloat(input2.value);
+
+        if (!isNaN(weight) && !isNaN(height) && height > 0) {
+            let BMI = (weight / (height * height)).toFixed(2);
+            if(BMI<=18.4){
+                result.innerText="Your BMI is: " + BMI +"You are Underweight"
+            }
+            else if(BMI>=18.5 && BMI<=24.9){
+                result.innerText ="Your BMI is: " + BMI +" "+ "Normal Weight"
+            }
+            else if(BMI>=30){
+                result.innerText ="Your BMI is :"+BMI+"you are obese"
+            }
+            
+        else{
+            result.innerText = "Please enter valid weight and height.";
+        } 
+           
+        }
+    });
+</script>
